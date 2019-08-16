@@ -34,3 +34,5 @@ Suggests: knitr,
     tidyverse,
     ggplot2
 VignetteBuilder: knitr
+URL: http://github.com/godwinyung/npsurvSS
+BugReports: http://github.com/godwinyung/npsurvSS/issues
