@@ -128,13 +128,13 @@ calc_design <- function(arm0, arm1, test) {
 #'   and variance ("1", "block[ randomization]", "simple[ randomization]") they
 #'   wish to use. Default choice is 'weight'="1", 'mean.approx'="asymptotic", and 'var.approx'="1".
 #'   For more details regarding the different mean and variance approximations
-#'   for the weight log-rank test, please see Yung and Liu (2019).
+#'   for the weight log-rank test, please see Yung and Liu (in press).
 #' @param alpha type 1 error rate
 #' @param sides 1=1-sided test, 2=2-sided test
 #' @seealso \code{\link{create_arm}} for creating an object of class 'arm'.
-#' @references Yung, G and Liu, Y. (Under Revision) Sample size and power for the weighted
+#' @references Yung, G and Liu, Y. (in press). Sample size and power for the weighted
 #' log-rank test and Kaplan-Meier based tests with allowance for non-proportional
-#' hazards. \emph{Biometrics}.
+#' hazards. \emph{Biometrics}. doi: 10.1111/biom.13196
 #' @examples
 #' arm0 <- create_arm(size=120, accr_time=6, surv_scale=0.05, loss_scale=0.005, follow_time=12)
 #' arm1 <- create_arm(size=120, accr_time=6, surv_scale=0.03, loss_scale=0.005, follow_time=12)
@@ -201,7 +201,7 @@ power_two_arm <- function(arm0,
 #'   and variance ("1", "block[ randomization]", "simple[ randomization]") they
 #'   wish to use. Default choice is 'weight'="1", 'mean.approx'="asymptotic", and 'var.approx'="1".
 #'   For more details regarding the different mean and variance approximations
-#'   for the weight log-rank test, please see Yung and Liu (2019).
+#'   for the weight log-rank test, please see Yung and Liu (in press).
 #' @param power 1 - type 2 error rate
 #' @param alpha type 1 error rate
 #' @param sides 1=1-sided test, 2=2-sided test
@@ -214,9 +214,9 @@ power_two_arm <- function(arm0,
 #'   \item{d}{total expected number of events; can be used to convert a time-driven
 #'   trial to an event-driven trial.}
 #' @seealso \code{\link{create_arm}} for creating an object of class 'arm'.
-#' @references Yung, G and Liu, Y. (Under Revision) Sample size and power for the weighted
+#' @references Yung, G and Liu, Y. (in press). Sample size and power for the weighted
 #' log-rank test and Kaplan-Meier based tests with allowance for non-proportional
-#' hazards. \emph{Biometrics}.
+#' hazards. \emph{Biometrics}. doi: 10.1111/biom.13196
 #' @examples
 #' arm0 <- create_arm(size=120, accr_time=6, surv_scale=0.05, loss_scale=0.005, follow_time=12)
 #' arm1 <- create_arm(size=120, accr_time=6, surv_scale=0.03, loss_scale=0.005, follow_time=12)

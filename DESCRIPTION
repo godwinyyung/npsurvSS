@@ -20,7 +20,7 @@ Description: A number of statistical tests have been proposed to compare two
   mixture cure). Specific to the weighted log-rank test, users may specify which 
   approximations they wish to use to estimate the large-sample mean and variance. 
   The default option has been shown to provide substantial improvement over 
-  Schoenfeld's conventional sample size and power equations (Yung and Liu, 2019).
+  Schoenfeld's conventional sample size and power equations (Yung and Liu, in press).
 Depends: R (>= 3.4.0)
 Imports:
   stats,
