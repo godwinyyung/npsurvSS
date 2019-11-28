@@ -25,7 +25,7 @@ large-sample mean ("asymptotic", "generalized schoenfeld", "event driven")
 and variance ("1", "block[ randomization]", "simple[ randomization]") they
 wish to use. Default choice is 'weight'="1", 'mean.approx'="asymptotic", and 'var.approx'="1".
 For more details regarding the different mean and variance approximations
-for the weight log-rank test, please see Yung and Liu (2019).}
+for the weight log-rank test, please see Yung and Liu (in press).}
 
 \item{power}{1 - type 2 error rate}
 
@@ -62,9 +62,9 @@ size_two_arm(arm0, arm1, list(
   list(test="survival difference", milestone=12)))
 }
 \references{
-Yung, G and Liu, Y. (Under Revision) Sample size and power for the weighted
+Yung, G and Liu, Y. (in press). Sample size and power for the weighted
 log-rank test and Kaplan-Meier based tests with allowance for non-proportional
-hazards. \emph{Biometrics}.
+hazards. \emph{Biometrics}. doi: 10.1111/biom.13196
 }
 \seealso{
 \code{\link{create_arm}} for creating an object of class 'arm'.
