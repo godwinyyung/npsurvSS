@@ -3,10 +3,10 @@ Type: Package
 Title: Sample Size and Power Calculation for Common Non-parametric Tests In
  Survival Analysis
 Version: 1.0.0
-Author: c(
-  person("Godwin", "Yung", email="godwin.y.yung@gmail.com", role=c("aut", "cre")),
-  person("Yi", "Liu", email="yiliu4321@gmail.com", role=c("aut"))
-  )
+Authors@R: c(person("Godwin", "Yung", email="godwin.y.yung@gmail.com", role=c("aut", "cre")),
+  person("Yi", "Liu", email="yiliu4321@gmail.com", role=c("aut")))
+Author: Godwin Yung [aut, cre],
+  Yi Liu [aut]
 Maintainer: Godwin Yung <godwin.y.yung@gmail.com>
 Description: A number of statistical tests have been proposed to compare two 
   survival curves, including the difference in (or ratio of) t-year 
