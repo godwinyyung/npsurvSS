@@ -125,7 +125,7 @@ create_arm <- function(size,
   # Check surv_shape
   if (surv_shape != 1 & length(surv_scale) > 1) {
     surv_shape = 1
-    warning("Piecewise weibull is not supported. surv_shape defaulted to 1.", call.=F)
+    warning("Piecewise Weibull is not supported. surv_shape defaulted to 1.", call.=F)
   }
 
   # Check surv_scale
