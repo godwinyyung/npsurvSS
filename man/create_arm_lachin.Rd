@@ -48,6 +48,10 @@ exponential distribution with 1\% loss to follow-up at 12 months.}
 \item{total_time}{Total study duration. Either \code{follow_time} (above) or
 \code{total_time} should be specified.}
 }
+\value{
+a list containing assumptions of size, accrual, censoring, survival, and
+  follow-up for a single arm.
+}
 \description{
 Create an object of class 'lachin' by specifying the trial parameters for
 a single arm, including the sample size, accrual distribution,

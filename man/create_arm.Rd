@@ -60,6 +60,10 @@ rates.}
 or \code{total_time}, need to be defined. If neither is defined, \code{total_time}
 is defaulted to max value 1e6.}
 }
+\value{
+a list containing assumptions of size, accrual, censoring, survival, and
+  follow-up for a single arm.
+}
 \description{
 Create an object of class 'arm' by specifying the trial parameters for
 a single arm, including the sample size, accrual distribution,

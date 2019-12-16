@@ -23,6 +23,10 @@ observed time; otherwise, observed time equals time-to-event.}
 \item{lower.tail}{logical; if TRUE, probabilities are \eqn{P(X \le x)};
 otherwise, \eqn{P(X > x)}.}
 }
+\value{
+\code{dmaxU} gives the density, \code{pmaxU} gives the distribution
+  function, and \code{emaxU} gives the expected value.
+}
 \description{
 Density, distribution function, and expected value for the maximum observed
 time in a single arm of patients.

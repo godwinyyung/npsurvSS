@@ -9,6 +9,8 @@
 #'   observed time; otherwise, observed time equals time-to-event.
 #' @param lower.tail      logical; if TRUE, probabilities are \eqn{P(X \le x)};
 #'   otherwise, \eqn{P(X > x)}.
+#' @return \code{dmaxU} gives the density, \code{pmaxU} gives the distribution
+#'   function, and \code{emaxU} gives the expected value.
 #' @details Given a patient's time-to-event \eqn{T_i} and time-to-censoring
 #' \eqn{C_i}, \eqn{U_i=\min(T_i, C_i)} defines the patient's observed time. The
 #' maximum observed time over patients of a single arm is then \eqn{\max_i U_i}.
@@ -61,6 +63,9 @@ emaxU <- function(arm, include_cens=T) {
 #'   otherwise, \eqn{P(X > x)}.
 #' @param p               vector of probabilities.
 #' @param margin          margin of accuracy.
+#' @return \code{dminimaxU} gives the density, \code{pminimaxU} gives the distribution
+#'   function, \code{qminimaxU} gives the quantile function, and \code{eminimaxU}
+#'   gives the expected value.
 #' @details Given a patient in arm \eqn{X_i=j} with time-to-event \eqn{T_i} and time-to-censoring
 #' \eqn{C_i}, \eqn{U_i=\min(T_i, C_i)} defines the patient's observed time. The
 #' maximum observed time over patients of arm \eqn{j} is then \eqn{\max_{i:X_i=j} U_i},

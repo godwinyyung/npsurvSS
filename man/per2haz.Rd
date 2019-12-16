@@ -11,6 +11,9 @@ per2haz(x, per = 0.5)
 
 \item{per}{(per)th percentile}
 }
+\value{
+survival percentile or hazard rate.
+}
 \description{
 Convert exponential survival percentile or hazard rate to the other.
 }

@@ -62,9 +62,9 @@ size_two_arm(arm0, arm1, list(
   list(test="survival difference", milestone=12)))
 }
 \references{
-Yung, G and Liu, Y. (in press). Sample size and power for the weighted
+Yung, G and Liu, Y. (2019). Sample size and power for the weighted
 log-rank test and Kaplan-Meier based tests with allowance for non-proportional
-hazards. \emph{Biometrics}. doi: 10.1111/biom.13196
+hazards. \emph{Biometrics}. <doi:10.1111/biom.13196>
 }
 \seealso{
 \code{\link{create_arm}} for creating an object of class 'arm'.

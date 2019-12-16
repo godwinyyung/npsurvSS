@@ -27,6 +27,11 @@ otherwise, \eqn{P(X > x)}.}
 
 \item{n}{number of observations.}
 }
+\value{
+\code{daccr} gives the density, \code{paccr} gives the distribution
+  function, \code{qaccr} gives the quantile function, and \code{raccr} generates
+  random deviates.
+}
 \description{
 Density, distribution function, quantile function,
 and random generation for the accrual distribution.

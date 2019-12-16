@@ -30,6 +30,11 @@ otherwise, \eqn{P(X > x)}.}
 
 \item{n}{number of observations.}
 }
+\value{
+\code{dloss} gives the density, \code{ploss} gives the distribution
+  function, \code{hloss} gives the hazard function, \code{qloss} gives the
+  quantile function, and \code{rloss} generates random deviates.
+}
 \description{
 Density, distribution function, hazard function, quantile function,
 and random generation for the loss to follow-up distribution.

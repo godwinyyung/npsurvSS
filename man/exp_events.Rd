@@ -13,6 +13,9 @@ exp_events(arm0 = NA, arm1 = NA, tau = NA)
 
 \item{tau}{vector of times. Defaults to total study duration.}
 }
+\value{
+expected number of events.
+}
 \description{
 Given one or two treatment arms, calculate the expected number
 of events \eqn{d} at time \eqn{\tau}.

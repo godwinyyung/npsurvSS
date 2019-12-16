@@ -32,6 +32,11 @@ otherwise, \eqn{P(X > x)}.}
 
 \item{margin}{margin of accuracy.}
 }
+\value{
+\code{dminimaxU} gives the density, \code{pminimaxU} gives the distribution
+  function, \code{qminimaxU} gives the quantile function, and \code{eminimaxU}
+  gives the expected value.
+}
 \description{
 Density, distribution function, quantile function, and expected value for the
 minimum of the maximum observed time over two treatment arms.

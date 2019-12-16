@@ -9,6 +9,9 @@
 #' @param arm             object of class 'arm'.
 #' @param lower.tail      logical; if TRUE, probabilities are \eqn{P(X \le x)};
 #'   otherwise, \eqn{P(X > x)}.
+#' @return \code{dloss} gives the density, \code{ploss} gives the distribution
+#'   function, \code{hloss} gives the hazard function, \code{qloss} gives the
+#'   quantile function, and \code{rloss} generates random deviates.
 #' @seealso \code{\link{create_arm}} and \code{\link{create_arm_lachin}}
 #'   for creating an object of class 'arm'.
 #' @export

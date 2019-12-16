@@ -12,6 +12,9 @@
 #'   for uncured patients is considered.
 #' @param lower.tail      logical; if TRUE, probabilities are \eqn{P(X \le x)};
 #'   otherwise, \eqn{P(X > x)}.
+#' @return \code{dsurv} gives the density, \code{psurv} gives the distribution
+#'   function, \code{hsurv} gives the hazard function, \code{qsurv} gives the
+#'   quantile function, and \code{rsurv} generates random deviates.
 #' @seealso \code{\link{create_arm}} and \code{\link{create_arm_lachin}}
 #'   for creating an object of class 'arm'.
 #' @export

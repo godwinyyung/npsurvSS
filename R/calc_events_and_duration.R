@@ -6,6 +6,7 @@
 #' @param arm0  object of class 'arm'.
 #' @param arm1  object of class 'arm'.
 #' @param tau   vector of times. Defaults to total study duration.
+#' @return expected number of events.
 #' @examples
 #' arm0 <- create_arm(size=120, accr_time=6, surv_scale=0.05, loss_scale=0.005, follow_time=12)
 #' arm1 <- create_arm(size=120, accr_time=6, surv_scale=0.03, loss_scale=0.005, follow_time=12)
@@ -54,6 +55,7 @@ exp_events <- function(arm0=NA, arm1=NA, tau=NA) {
 #' @param search_prec   value controlling the desired precision before
 #'   terminating the search.
 #' @param max_duration  maximum \eqn{\tau} for consideration.
+#' @return expected trial duration.
 #' @examples
 #' arm0 <- create_arm(size=120, accr_time=6, surv_scale=0.05, loss_scale=0.005, follow_time=12)
 #' arm1 <- create_arm(size=120, accr_time=6, surv_scale=0.03, loss_scale=0.005, follow_time=12)

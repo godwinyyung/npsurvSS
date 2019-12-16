@@ -21,6 +21,9 @@ terminating the search.}
 
 \item{max_duration}{maximum \eqn{\tau} for consideration.}
 }
+\value{
+expected trial duration.
+}
 \description{
 Given one or two treatment arms, calculate the time \eqn{\tau} at which
 the expected number of events equals \eqn{d}.

@@ -41,6 +41,8 @@
 #' @param total_time total study duration. Only 1 of the 2 parameters, \code{follow_time}
 #'   or \code{total_time}, need to be defined. If neither is defined, \code{total_time}
 #'   is defaulted to max value 1e6.
+#' @return a list containing assumptions of size, accrual, censoring, survival, and
+#'   follow-up for a single arm.
 #' @examples
 #' # Example 1
 #' example <- create_arm(size=120,
@@ -225,6 +227,8 @@ create_arm <- function(size,
 #'   \code{total_time} (below) should be specified.
 #' @param total_time Total study duration. Either \code{follow_time} (above) or
 #'   \code{total_time} should be specified.
+#' @return a list containing assumptions of size, accrual, censoring, survival, and
+#'   follow-up for a single arm.
 #' @seealso \code{\link{create_arm}} for creating an object of class 'arm'.
 #' @references Lachin, J. M. and Foulkes, M. A. (1986) Evaluation of sample size and power for analyses of
 #'   survival with allowance for nonuniform patient entry, losses to follow-up,
@@ -305,6 +309,7 @@ create_arm_lachin <- function(size,
 #' Convert exponential survival percentile or hazard rate to the other.
 #' @param x     survival percentile or exponential hazard rate
 #' @param per   (per)th percentile
+#' @return survival percentile or hazard rate.
 #' @details \deqn{y=-log(1-per)/x}
 #' @examples
 #' per2haz(14)          # hazard rate for exponential with 14-month median

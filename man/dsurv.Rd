@@ -34,6 +34,11 @@ otherwise, \eqn{P(X > x)}.}
 
 \item{n}{number of observations.}
 }
+\value{
+\code{dsurv} gives the density, \code{psurv} gives the distribution
+  function, \code{hsurv} gives the hazard function, \code{qsurv} gives the
+  quantile function, and \code{rsurv} generates random deviates.
+}
 \description{
 Density, distribution function, hazard function, quantile function,
 and random generation for the survival distribution.
