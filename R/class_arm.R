@@ -111,7 +111,7 @@ create_arm <- function(size,
       stop("Number of accrual intervals (accr_interval) does not match number of
          accrual parameters (accr_param).", call.=F)
     }
-    if (length(accr_interval) > 2 & sum(accr_param) != 1) {
+    if (length(accr_interval) > 2 & !is_almost_k(sum(accr_param), k = 1L)) {
       stop("accr_param must sum to 1.", call.=F)
     }
   } else if (is.na(accr_param) | length(accr_param) > 1) {
@@ -319,4 +319,9 @@ create_arm_lachin <- function(size,
 #' @export
 per2haz <- function(x, per=0.5) {
   -log(1-per)/x
+}
+
+#' @noRd
+is_almost_k <- function(x, k, tol = .Machine$double.eps^0.5) {
+  abs(x - k) < tol
 }
