@@ -124,18 +124,19 @@ calc_design <- function(arm0, arm1, test) {
 #'   does not require additional keys. However, user may choose which weight function
 #'   ("1"=unweighted, "n"=Gehan-Breslow, "sqrtN"=Tarone-Ware, "FH_p[a]_q[b]"=
 #'   Fleming-Harrington with p=a and q=b) and which approximation for the
-#'   large-sample mean ("asymptotic", "generalized schoenfeld", "event driven")
-#'   and variance ("1", "block[ randomization]", "simple[ randomization]") they
-#'   wish to use. Default choice is 'weight'="1", 'mean.approx'="asymptotic", and 'var.approx'="1".
+#'   large-sample mean ("asymptotic", "generalized schoenfeld", "event driven",
+#'   "freedman", "rubinstein") and variance ("1", "block[ randomization]", "simple[ randomization]") 
+#'   they wish to use. Default choice is 'weight'="1", 'mean.approx'="asymptotic", and 'var.approx'="1".
 #'   For more details regarding the different mean and variance approximations
-#'   for the weight log-rank test, please see Yung and Liu (2019).
+#'   for the weight log-rank test, please see Yung and Liu (2020). If there are multiple lists, 
+#'   then users may provide a 'label' for each list to be displayed in the output.
 #' @param alpha type 1 error rate
 #' @param sides 1=1-sided test, 2=2-sided test
 #' @return power.
 #' @seealso \code{\link{create_arm}} for creating an object of class 'arm'.
-#' @references Yung, G and Liu, Y. (2019). Sample size and power for the weighted
+#' @references Yung, G and Liu, Y. (2020). Sample size and power for the weighted
 #' log-rank test and Kaplan-Meier based tests with allowance for non-proportional
-#' hazards. \emph{Biometrics}. <doi:10.1111/biom.13196>
+#' hazards. \emph{Biometrics} 76(3):939-950.
 #' @examples
 #' arm0 <- create_arm(size=120, accr_time=6, surv_scale=0.05, loss_scale=0.005, follow_time=12)
 #' arm1 <- create_arm(size=120, accr_time=6, surv_scale=0.03, loss_scale=0.005, follow_time=12)
@@ -148,8 +149,8 @@ calc_design <- function(arm0, arm1, test) {
 #' power_two_arm(arm0, arm1, list(test="rmst ratio", milestone=12))
 #' power_two_arm(arm0, arm1, list(test="percentile difference", percentile=0.25))
 #' power_two_arm(arm0, arm1, list(
-#'   list(test="weighted logrank"),
-#'   list(test="survival difference", milestone=12)))
+#'   list(test="weighted logrank", label="Logrank"),
+#'   list(test="survival difference", milestone=12, label="12-month survival difference")))
 #' @export
 power_two_arm <- function(arm0,
                           arm1,
@@ -157,7 +158,7 @@ power_two_arm <- function(arm0,
                           alpha=0.025,
                           sides=1) {
 
-  if (class(test[[1]]) != "list") { # one test to perform
+  if (! inherits(test[[1]], "list")) { # one test to perform
 
     n       <- arm0$size + arm1$size
     design  <- calc_design(arm0, arm1, test)
@@ -173,7 +174,8 @@ power_two_arm <- function(arm0,
 
     out <- c()
     for (i in 1:length(test)) {
-      out <- rbind(out, c(i, power_two_arm(arm0, arm1, test[[i]], alpha, sides)))
+      label = ifelse("label" %in% names(test[[i]]), test[[i]]$label, i)
+      out <- rbind(out, c(label, power_two_arm(arm0, arm1, test[[i]], alpha, sides)))
     }
     out <- data.frame(out)
     names(out) <- c("test", "power")
@@ -198,11 +200,12 @@ power_two_arm <- function(arm0,
 #'   does not require additional keys. However, user may choose which weight function
 #'   ("1"=unweighted, "n"=Gehan-Breslow, "sqrtN"=Tarone-Ware, "FH_[a]_[b]"=
 #'   Fleming-Harrington with p=a and q=b) and which approximation for the
-#'   large-sample mean ("asymptotic", "generalized schoenfeld", "event driven")
-#'   and variance ("1", "block[ randomization]", "simple[ randomization]") they
-#'   wish to use. Default choice is 'weight'="1", 'mean.approx'="asymptotic", and 'var.approx'="1".
+#'   large-sample mean ("asymptotic", "generalized schoenfeld", "event driven",
+#'   "freedman", "rubinstein") and variance ("1", "block[ randomization]", "simple[ randomization]") 
+#'   they wish to use. Default choice is 'weight'="1", 'mean.approx'="asymptotic", and 'var.approx'="1".
 #'   For more details regarding the different mean and variance approximations
-#'   for the weight log-rank test, please see Yung and Liu (in press).
+#'   for the weight log-rank test, please see Yung and Liu (2020). If there are multiple lists, 
+#'   then users may provide a 'label' for each list to be displayed in the output.
 #' @param power 1 - type 2 error rate
 #' @param alpha type 1 error rate
 #' @param sides 1=1-sided test, 2=2-sided test
@@ -215,9 +218,9 @@ power_two_arm <- function(arm0,
 #'   \item{d}{total expected number of events; can be used to convert a time-driven
 #'   trial to an event-driven trial.}
 #' @seealso \code{\link{create_arm}} for creating an object of class 'arm'.
-#' @references Yung, G and Liu, Y. (2019). Sample size and power for the weighted
+#' @references Yung, G and Liu, Y. (2020). Sample size and power for the weighted
 #' log-rank test and Kaplan-Meier based tests with allowance for non-proportional
-#' hazards. \emph{Biometrics}. <doi:10.1111/biom.13196>
+#' hazards. \emph{Biometrics} 76(3):939-950.
 #' @examples
 #' arm0 <- create_arm(size=120, accr_time=6, surv_scale=0.05, loss_scale=0.005, follow_time=12)
 #' arm1 <- create_arm(size=120, accr_time=6, surv_scale=0.03, loss_scale=0.005, follow_time=12)
@@ -230,8 +233,8 @@ power_two_arm <- function(arm0,
 #' size_two_arm(arm0, arm1, list(test="rmst ratio", milestone=12))
 #' size_two_arm(arm0, arm1, list(test="percentile difference", percentile=0.25))
 #' size_two_arm(arm0, arm1, list(
-#'   list(test="weighted logrank"),
-#'   list(test="survival difference", milestone=12)))
+#'   list(test="weighted logrank", label="Logrank"),
+#'   list(test="survival difference", milestone=12, label="12-month survival difference")))
 
 #' @export
 size_two_arm <- function(arm0,
@@ -241,7 +244,7 @@ size_two_arm <- function(arm0,
                          alpha=0.025,
                          sides=1) {
 
-  if (class(test[[1]]) != "list") { # one test to perform
+  if (! inherits(test[[1]], "list")) { # one test to perform
 
     # sample size for 1-sided test
     p1      <- arm1$size / (arm0$size + arm1$size)
@@ -273,9 +276,9 @@ size_two_arm <- function(arm0,
 
     out <- c(out, # n0, n1
              sum(out), # n
-             out[1]*prob_event(arm0), # d0
-             out[2]*prob_event(arm1), # d1
-             out[1]*prob_event(arm0)+out[2]*prob_event(arm1)) # d
+             out[1] * prob_event(arm0), # d0
+             out[2]  *prob_event(arm1), # d1
+             out[1] * prob_event(arm0) + out[2] * prob_event(arm1)) # d
     # if (out[4] %% 1 < out[5] %% 1) { # rounding
     #   out[4] <- floor(out[4])
     #   out[5] <- ceiling(out[5])
@@ -290,7 +293,8 @@ size_two_arm <- function(arm0,
 
     out <- c()
     for (i in 1:length(test)) {
-      out <- rbind(out, c(i, size_two_arm(arm0, arm1, test[[i]], power, alpha, sides)))
+      label = ifelse("label" %in% names(test[[i]]), test[[i]]$label, i)
+      out <- rbind(out, c(label, size_two_arm(arm0, arm1, test[[i]], power, alpha, sides)))
     }
     out <- data.frame(out)
     names(out)[1] <- "test"

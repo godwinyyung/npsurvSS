@@ -4,10 +4,21 @@
 \alias{create_arm}
 \title{Create an 'arm' object}
 \usage{
-create_arm(size, accr_time, accr_dist = "pieceuni",
-  accr_interval = c(0, accr_time), accr_param = NA, surv_cure = 0,
-  surv_interval = c(0, Inf), surv_shape = 1, surv_scale,
-  loss_shape = 1, loss_scale, follow_time = Inf, total_time = Inf)
+create_arm(
+  size,
+  accr_time,
+  accr_dist = "pieceuni",
+  accr_interval = c(0, accr_time),
+  accr_param = NA,
+  surv_cure = 0,
+  surv_interval = c(0, Inf),
+  surv_shape = 1,
+  surv_scale,
+  loss_shape = 1,
+  loss_scale,
+  follow_time = Inf,
+  total_time = Inf
+)
 }
 \arguments{
 \item{size}{sample size. If total sample size is unknown, provide

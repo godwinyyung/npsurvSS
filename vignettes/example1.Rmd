@@ -20,7 +20,9 @@ We provide here code to replicate Figures 1C and 2 from Example 1 of our manuscr
 
 ```{r, message=FALSE, warning=FALSE}
 library(npsurvSS)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(tibble)
 library(ggplot2)
 ```
 

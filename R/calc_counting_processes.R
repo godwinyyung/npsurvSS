@@ -2,8 +2,9 @@
 # CLASS ARM
 ###
 
-# For a subject in the provided arm, calculate the probability he or
-# she is observed to be at risk at time=teval after enrollment.
+# For a subject in the provided arm, calculate the probability
+# that he or she is at risk for an event at time=teval after
+# enrollment.
 prob_risk <- function(arm, teval) {
   psurv(teval, arm, lower.tail=F) *
     ploss(teval, arm, lower.tail=F) *
@@ -25,6 +26,7 @@ prob_event <- function(arm, tmin=0, tmax=arm$total_time) {
 }
 
 # prob_event for arm of class "arm"
+#' @export
 prob_event.arm <- function(arm, tmin=0, tmax=arm$total_time) {
   l = length(tmax)
   if (l==1) {
@@ -38,13 +40,13 @@ prob_event.arm <- function(arm, tmin=0, tmax=arm$total_time) {
 }
 
 # For a subject in the provided arm, calculate the probability he or
-# she is observed to be censored by time=teval after enrollment due to
-# loss of follow-up, administration, or either.
+# she is censored by time=teval after enrollment.
 prob_censor <- function(arm, tmin=0, tmax=arm$total_time, reason="either") {
   UseMethod("prob_censor", arm)
 }
 
 # prob_censor for arm of class "arm"
+#' @export
 prob_censor.arm <- function(arm, tmin=0, tmax=arm$total_time, reason="either") {
   l = length(tmax)
   if (l == 1) {
@@ -77,6 +79,7 @@ prob_censor.arm <- function(arm, tmin=0, tmax=arm$total_time, reason="either") {
 ###
 
 # prob_event for arm of class "lachin"
+#' @export
 prob_event.lachin <- function(arm, tmin=0, tmax=arm$total_time) {
   tmid <- pmax(pmin(tmax, arm$follow_time), tmin)
   rate <- arm$surv_scale + arm$loss_scale
@@ -98,6 +101,7 @@ prob_event.lachin <- function(arm, tmin=0, tmax=arm$total_time) {
 }
 
 # prob_censor for arm of class "lachin"
+#' @export
 prob_censor.lachin <- function(arm, tmin=0, tmax=arm$total_time, reason="either") {
   prob <- 0
   prob_event <- prob_event(arm, tmin, tmax)

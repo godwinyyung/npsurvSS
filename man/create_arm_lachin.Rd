@@ -4,10 +4,20 @@
 \alias{create_arm_lachin}
 \title{Create a 'lachin' object}
 \usage{
-create_arm_lachin(size, accr_time, accr_dist = "pieceuni",
-  accr_param = NA, surv_median = NA, surv_exphazard = NA,
-  surv_milestone = NA, loss_median = NA, loss_exphazard = NA,
-  loss_milestone = NA, follow_time = Inf, total_time = Inf)
+create_arm_lachin(
+  size,
+  accr_time,
+  accr_dist = "pieceuni",
+  accr_param = NA,
+  surv_median = NA,
+  surv_exphazard = NA,
+  surv_milestone = NA,
+  loss_median = NA,
+  loss_exphazard = NA,
+  loss_milestone = NA,
+  follow_time = Inf,
+  total_time = Inf
+)
 }
 \arguments{
 \item{size}{sample size. If total sample size is unknown, provide

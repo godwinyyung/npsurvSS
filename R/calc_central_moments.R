@@ -75,16 +75,26 @@ delta_wlr <- function(arm0, arm1, weight="1", approx="asymptotic") {
   p1 <- arm1$size / (arm0$size + arm1$size)
   p0 <- 1 - p1
 
-  if (approx == "event driven") {
+  if (approx %in% c("event driven", "freedman", "rubinstein")) {
+    
     if (sum(arm0$surv_shape != arm1$surv_shape) > 0 |
         length( unique(arm1$surv_scale / arm0$surv_scale) ) > 1) {
       stop("Hazard is not proportional over time.", call.=F)
     } else if (weight != "1") {
       stop("Weight must equal `1`.", call.=F)
     }
+    
     theta <- c(arm0$surv_shape * log( arm1$surv_scale / arm0$surv_scale ))[1] # log hazard ratio
     nu    <- p0 * prob_event(arm0) + p1 * prob_event(arm1) # probability of event
-    delta <- theta * p0 * p1 * nu
+    
+    if (approx == "event driven") {
+      delta <- theta * p0 * p1 * nu
+    } else if (approx == "freedman") {
+      delta <- (exp(theta) - 1) / (1 + exp(theta) * p1 / p0) * sqrt(nu * p1 / p0)
+    } else { # rubinstein
+      delta <- theta * (1 / p0 / prob_event(arm0) + 1 / p1 / prob_event(arm1)) ^ (-1/2)
+    }
+    
   } else if (approx == "asymptotic") {
     delta <- stats::integrate(function(x) weight_wlr(x, arm0, arm1, weight) *
                                 (1 / p0 / prob_risk(arm0, x) + 1 / p1 / prob_risk(arm1, x)) ^ (-1) *
@@ -136,6 +146,8 @@ sigma2_wlr <- function(arm0, arm1, weight="1", approx="asymptotic") {
   if (approx == "event driven") {
     nu      <- p0 * prob_event(arm0) + p1 * prob_event(arm1)
     sigma2  <- p0 * p1 * nu
+  } else if (approx %in% c("freedman", "rubinstein")) {
+    sigma2  <- 1
   } else if (approx %in% c("asymptotic", "generalized schoenfeld")) {
     sigma2  <- stats::integrate(function(x) weight_wlr(x, arm0, arm1, weight)^2 *
                                   p0 * prob_risk(arm0, x) * p1 * prob_risk(arm1, x) /

@@ -4,8 +4,13 @@
 \alias{power_two_arm}
 \title{Power}
 \usage{
-power_two_arm(arm0, arm1, test = list(test = "weighted logrank"),
-  alpha = 0.025, sides = 1)
+power_two_arm(
+  arm0,
+  arm1,
+  test = list(test = "weighted logrank"),
+  alpha = 0.025,
+  sides = 1
+)
 }
 \arguments{
 \item{arm0}{object of class 'arm'.}
@@ -21,11 +26,12 @@ either the desired 'milestone' or 'percentile'. The weighted log-rank test
 does not require additional keys. However, user may choose which weight function
 ("1"=unweighted, "n"=Gehan-Breslow, "sqrtN"=Tarone-Ware, "FH_p[a]_q[b]"=
 Fleming-Harrington with p=a and q=b) and which approximation for the
-large-sample mean ("asymptotic", "generalized schoenfeld", "event driven")
-and variance ("1", "block[ randomization]", "simple[ randomization]") they
-wish to use. Default choice is 'weight'="1", 'mean.approx'="asymptotic", and 'var.approx'="1".
+large-sample mean ("asymptotic", "generalized schoenfeld", "event driven",
+"freedman", "rubinstein") and variance ("1", "block[ randomization]", "simple[ randomization]") 
+they wish to use. Default choice is 'weight'="1", 'mean.approx'="asymptotic", and 'var.approx'="1".
 For more details regarding the different mean and variance approximations
-for the weight log-rank test, please see Yung and Liu (2019).}
+for the weight log-rank test, please see Yung and Liu (2020). If there are multiple lists, 
+then users may provide a 'label' for each list to be displayed in the output.}
 
 \item{alpha}{type 1 error rate}
 
@@ -49,13 +55,13 @@ power_two_arm(arm0, arm1, list(test="survival difference", milestone=12))
 power_two_arm(arm0, arm1, list(test="rmst ratio", milestone=12))
 power_two_arm(arm0, arm1, list(test="percentile difference", percentile=0.25))
 power_two_arm(arm0, arm1, list(
-  list(test="weighted logrank"),
-  list(test="survival difference", milestone=12)))
+  list(test="weighted logrank", label="Logrank"),
+  list(test="survival difference", milestone=12, label="12-month survival difference")))
 }
 \references{
-Yung, G and Liu, Y. (2019). Sample size and power for the weighted
+Yung, G and Liu, Y. (2020). Sample size and power for the weighted
 log-rank test and Kaplan-Meier based tests with allowance for non-proportional
-hazards. \emph{Biometrics}. <doi:10.1111/biom.13196>
+hazards. \emph{Biometrics} 76(3):939-950.
 }
 \seealso{
 \code{\link{create_arm}} for creating an object of class 'arm'.

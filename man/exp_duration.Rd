@@ -4,8 +4,14 @@
 \alias{exp_duration}
 \title{Expected duration}
 \usage{
-exp_duration(arm0 = NA, arm1 = NA, d, search_start = 10,
-  search_prec = 0.01, max_duration = 1000)
+exp_duration(
+  arm0 = NA,
+  arm1 = NA,
+  d,
+  search_start = 10,
+  search_prec = 0.01,
+  max_duration = 1000
+)
 }
 \arguments{
 \item{arm0}{object of class 'arm'.}
