@@ -38,5 +38,5 @@ Suggests: knitr,
     tibble,
     ggplot2
 VignetteBuilder: knitr
-URL: http://github.com/godwinyung/npsurvSS
-BugReports: http://github.com/godwinyung/npsurvSS/issues
+URL: https://github.com/godwinyung/npsurvSS
+BugReports: https://github.com/godwinyung/npsurvSS/issues
